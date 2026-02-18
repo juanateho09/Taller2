@@ -13,7 +13,7 @@ public class SystemMobility {
         this.rentalHistory = new ArrayList<>();
     }
 
-    // Métodos
+    // Metodos
     public Rent startRent(User user, Vehicle vehicle, Station originStation) {
 
         if (vehicle.getState().equals("En mantenimiento")) {
