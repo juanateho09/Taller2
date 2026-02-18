@@ -11,7 +11,7 @@ public class Station {
     private int capacity;
 
 
-n
+
     private List<Vehicle> vehicles;
 
     // Constructor
