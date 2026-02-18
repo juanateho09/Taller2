@@ -16,18 +16,14 @@ public class SystemMobility {
     // Metodos
     public Rent startRent(User user, Vehicle vehicle, Station originStation) {
 
-        if (vehicle.getState().equals("En mantenimiento")) {
-            System.out.println("Error: el vehículo está en mantenimiento");
-            return null;
-        }
-
         if (!vehicle.getState().equals("Disponible")) {
             System.out.println("Error: El vehículo no está disponible");
             return null;
         }
 
-        Rent newRent = new Rent(LocalDateTime.now(), originStation, vehicle);
+        Rent newRent = new Rent(LocalDateTime.now(), originStation, vehicle, user);
         vehicle.setState("En uso");
+        originStation.dispatchVehicle(vehicle);
         rentalHistory.add(newRent);
         System.out.println("Alquiler iniciado exitosamente");
         return newRent;

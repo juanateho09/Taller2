@@ -7,7 +7,7 @@ public class Station {
 
 
     private String code;
-    private String ubication;
+    private String location;
     private int capacity;
 
 
@@ -17,7 +17,7 @@ public class Station {
     // Constructor
     public Station(String code, String ubication, int capacity) {
         this.code = code;
-        this.ubication = ubication;
+        this.location = ubication;
         this.capacity = capacity;
         this.vehicles = new ArrayList<>();
     }
@@ -46,12 +46,12 @@ public class Station {
         this.code = code;
     }
 
-    public String getUbication() {
-        return ubication;
+    public String getLocation() {
+        return location;
     }
 
-    public void setUbication(String ubication) {
-        this.ubication = ubication;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public int getCapacity() {

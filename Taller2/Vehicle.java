@@ -64,10 +64,10 @@ public class Vehicle {
     }
     //setter con verificacion para estado de vehiculo
     public void setState(String state) {
-        if (state != null && !state.isEmpty()) {
+        if (state.equals("Disponible") || state.equals("En uso") || state.equals("En mantenimiento")) {
             this.state = state;
         } else {
-            throw new IllegalArgumentException("Error: El estado no puede ser nulo.");
+            throw new IllegalArgumentException("Estado inválido: use Disponible, En uso o En mantenimiento");
         }
     }
     //setter con verificacion para la bateria

@@ -11,16 +11,18 @@ public class Rent {
     private Station destinationStation;
     private double totalCost;
     private Vehicle rentalVehicle;
+    private User user;
 
     // Constructor
 
-    public Rent(LocalDateTime startDate, Station originStation, Vehicle rentalVehicle){
+    public Rent(LocalDateTime startDate, Station originStation, Vehicle rentalVehicle, User user){
         this.startDate = startDate;
         this.endDate = null;
         this.originStation = originStation;
         this.destinationStation = null;
         this.totalCost = 0;
         this.rentalVehicle = rentalVehicle;
+        this.user = user;
 
     }
     // Métodos
@@ -31,14 +33,14 @@ public class Rent {
         this.totalCost = calculateCost();
     }
 
-    public double calculateCost() {
+    private double calculateCost() {
         long minutes = ChronoUnit.MINUTES.between(startDate, endDate);
         double baseCost = minutes * 0.5;
 
         int hour = endDate.getHour();
         double penalty = (hour > 22 || hour < 6) ? baseCost * 0.1 : 0;
-
-        return baseCost + penalty;
+        double batteryPenalty = (rentalVehicle.getBattery() < 20) ? baseCost * 0.15 : 0;
+        return baseCost + penalty + batteryPenalty;
     }
 
     // Getters
@@ -67,12 +69,11 @@ public class Rent {
     public Vehicle getRentalVehicle() {
         return rentalVehicle;
     }
-
+    public User getUser() {
+        return user;
+    }
     // Setters
 
-    public void setEndDate(LocalDateTime endDate) {
-        this.endDate = endDate;
-    }
 
     public void setOriginStation(Station originStation) {
         this.originStation = originStation;
