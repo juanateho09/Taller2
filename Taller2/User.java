@@ -6,12 +6,13 @@ public class User {
     private String name;
     private String paymentType;
 
+    //contructor
     public User(String id, String name, String paymentType) {
         setId(id);
         setName(name);
         setPaymentType(paymentType);
     }
-
+    //getters
     public String getId() {
         return id;
     }
@@ -23,7 +24,7 @@ public class User {
     public String getPaymentType() {
         return paymentType;
     }
-
+    //setter con verificacion para id
     public void setId(String id) {
 
         if (id != null && !id.isEmpty()) {
@@ -32,7 +33,7 @@ public class User {
             throw new IllegalArgumentException("Error: el id no puede estar vacío");
         }
     }
-
+    //setter con verificacion para el nombre
     public void setName(String name) {
         if (name == null) {
             throw new IllegalArgumentException("Error: El nombre no puede ser nulo.");
@@ -46,7 +47,7 @@ public class User {
         }
         this.name = name;
     }
-
+    //setter con verificacion para el tipo de pago
     public void setPaymentType(String paymentType) {
 
         if (paymentType == null) {
