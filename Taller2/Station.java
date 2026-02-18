@@ -5,13 +5,13 @@ import java.util.List;
 
 public class Station {
 
-    // Atributos privados tal como se muestran en el UML
+
     private String code;
     private String ubication;
     private int capacity;
 
-    // Atributo adicional para manejar la agregación (rombo blanco)
-    // Necesario para que los métodos receive y dispatch funcionen
+
+n
     private List<Vehicle> vehicles;
 
     // Constructor
@@ -22,24 +22,21 @@ public class Station {
         this.vehicles = new ArrayList<>();
     }
 
-    // Métodos públicos según el UML
+    // Métodos públicos
 
     public boolean receiveVehicle(Vehicle v) {
-        // Regla de negocio: Si hay espacio, lo recibe y retorna true.
         if (this.vehicles.size() < this.capacity) {
             this.vehicles.add(v);
             return true;
         }
-        // Si la estación está llena, retorna false
         return false;
     }
 
     public void dispatchVehicle(Vehicle v) {
-        // Remueve el vehículo de la lista de la estación
         this.vehicles.remove(v);
     }
 
-    // Getters y Setters (Buenas prácticas de POO para atributos privados)
+    // Getters y Setters
 
     public String getCode() {
         return code;
