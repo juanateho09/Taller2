@@ -1,18 +1,20 @@
 package Taller2;
 
 public class User {
-
+    // Atributos privados para aplicar el principio de encapsulamiento.
     private String id;
     private String name;
     private String paymentType;
 
-    //contructor
+    // Constructor de la clase User.
     public User(String id, String name, String paymentType) {
         setId(id);
         setName(name);
         setPaymentType(paymentType);
     }
-    //getters
+
+    // Getters
+    // Métodos para leer los valores de los atributos sin modificarlos.
     public String getId() {
         return id;
     }
@@ -24,7 +26,9 @@ public class User {
     public String getPaymentType() {
         return paymentType;
     }
-    //setter con verificacion para id
+
+    // Setters con validación
+    // Hace una verificacion de que el Id ingresado no este vacio
     public void setId(String id) {
 
         if (id != null && !id.isEmpty()) {
@@ -33,12 +37,12 @@ public class User {
             throw new IllegalArgumentException("Error: el id no puede estar vacío");
         }
     }
-    //setter con verificacion para el nombre
+
+    // Verfica que el nombre solo sean letras, que no este vacio y ademas que sea mayor a 3 letras
     public void setName(String name) {
         if (name == null) {
             throw new IllegalArgumentException("Error: El nombre no puede ser nulo.");
         }
-
         if (name.trim().length() < 3) {
             throw new IllegalArgumentException("Error: El nombre es muy corto. Debe tener mínimo 3 letras.");
         }
@@ -47,13 +51,11 @@ public class User {
         }
         this.name = name;
     }
-    //setter con verificacion para el tipo de pago
+    // Verifica que el tipo de pago urtilizado sea uno valido, como Efectivo o Tarjeta
     public void setPaymentType(String paymentType) {
-
         if (paymentType == null) {
             throw new IllegalArgumentException("Error: El tipo de pago no puede ser nulo");
         }
-
         if (paymentType.equals("Tarjeta") || paymentType.equals("Efectivo")) {
             this.paymentType = paymentType;
         } else {

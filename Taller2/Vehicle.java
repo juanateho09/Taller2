@@ -2,20 +2,21 @@ package Taller2;
 
 public class Vehicle {
 
+    // Atributos privados para asegurar el encapsulamiento
     private String id;
     private String vehicleType;
     private String state;
     private int battery;
 
 
-    //constructor
+    // Constructor de la clase Vehicle.
     public Vehicle(String id, String vehicleType, String state, int battery) {
         setId(id);
         setVehicleType(vehicleType);
         setState(state);
         setBattery(battery);
     }
-    //metodo para enviar vehiculo a mantenimiento
+    // Metodo que envía el vehículo a mantenimiento si no lo está ya.
     public void sendToMaintenance() {
         if (this.state.equals("En mantenimiento")) {
             System.out.println("El vehiculo ya esta en mantenimiento.");
@@ -24,7 +25,7 @@ public class Vehicle {
             System.out.println("El vehículo " + this.id + " ha sido enviado a mantenimiento.");
         }
     }
-    //metodo para sacar el vehiculo de mantenimiento
+    // Metodo que saca el vehículo de mantenimiento y lo deja disponible.
     public void takeOutMaintenance() {
         if (this.state.equals("En mantenimiento")) {
             this.state = "Disponible";
@@ -33,7 +34,7 @@ public class Vehicle {
             System.out.println("El vehículo no estaba en mantenimiento, no se puede sacar.");
         }
     }
-    //getters
+    // Getters
     public String getId() {
         return id;
     }
@@ -46,7 +47,9 @@ public class Vehicle {
     public int getBattery() {
         return battery;
     }
-    //setter con verificacion para id
+
+    // Setter con Validación
+    // Verifica que el id cumpla con el requiriemiento de no estar vacio
     public void setId(String id) {
         if (id != null && !id.isEmpty()) {
             this.id = id;
@@ -54,7 +57,8 @@ public class Vehicle {
             throw new IllegalArgumentException("Error: El id es invalido");
         }
     }
-    //setter con verificacion para tipo de vehiculo
+
+    // Verifica que el tipo de vehiculo sea el adecuado
     public void setVehicleType(String vehicleType) {
         if (vehicleType != null && !vehicleType.isEmpty()) {
             this.vehicleType = vehicleType;
@@ -62,7 +66,8 @@ public class Vehicle {
             throw new IllegalArgumentException("Error: El tipo de vehículo es obligatorio.");
         }
     }
-    //setter con verificacion para estado de vehiculo
+
+    // Verifica que el tipo de estado de vehiculo ingresado sea el correcto
     public void setState(String state) {
         if (state.equals("Disponible") || state.equals("En uso") || state.equals("En mantenimiento")) {
             this.state = state;
@@ -70,7 +75,7 @@ public class Vehicle {
             throw new IllegalArgumentException("Estado inválido: use Disponible, En uso o En mantenimiento");
         }
     }
-    //setter con verificacion para la bateria
+    // Verifica que el valor de la bateria ingresado sea un valor valido
     public void setBattery(int battery) {
         // Validación importante: La batería debe estar entre 0 y 100
         if (battery >= 0 && battery <= 100) {
@@ -79,6 +84,5 @@ public class Vehicle {
             throw new IllegalArgumentException("Error: La batería debe estar entre 0 y 100.");
         }
     }
-
 
 }
