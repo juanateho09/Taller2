@@ -1,5 +1,6 @@
 package Taller2;
 
+// Importamos
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
@@ -25,21 +26,20 @@ public class Rent {
         this.user = user;
 
     }
-    // Métodos
-
+    // Método para finalizar el alquiler
     public void endRent(Station destinationStation){
         this.endDate = LocalDateTime.now();
         this.destinationStation = destinationStation;
         this.totalCost = calculateCost();
     }
-
+    // Metodo para calcular el costo de un alquiler
     private double calculateCost() {
         long minutes = ChronoUnit.MINUTES.between(startDate, endDate);
         double baseCost = minutes * 0.5;
 
         int hour = endDate.getHour();
-        double penalty = (hour > 22 || hour < 6) ? baseCost * 0.1 : 0;
-        double batteryPenalty = (rentalVehicle.getBattery() < 20) ? baseCost * 0.15 : 0;
+        double penalty = (hour > 22 || hour < 6) ? baseCost * 0.1 : 0; // Penalizacion por entregar el vehiculo por fuera del horario (22:00-6:00)
+        double batteryPenalty = (rentalVehicle.getBattery() < 20) ? baseCost * 0.15 : 0; // Penalizacion por entregar el vehiculo con bateria baja (-20%)
         return baseCost + penalty + batteryPenalty;
     }
 

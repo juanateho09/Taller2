@@ -9,9 +9,6 @@ public class Station {
     private String code;
     private String location;
     private int capacity;
-
-
-
     private List<Vehicle> vehicles;
 
     // Constructor
@@ -22,8 +19,7 @@ public class Station {
         this.vehicles = new ArrayList<>();
     }
 
-    // Métodos públicos
-
+    // Método que recibe un vehiculo en la estacion
     public boolean receiveVehicle(Vehicle v) {
         if (this.vehicles.size() < this.capacity) {
             this.vehicles.add(v);
@@ -31,7 +27,7 @@ public class Station {
         }
         return false;
     }
-
+    // Metodo que despacha el vehiculo de la estacion
     public void dispatchVehicle(Vehicle v) {
         this.vehicles.remove(v);
     }
@@ -57,7 +53,6 @@ public class Station {
     public int getCapacity() {
         return capacity;
     }
-
     public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
