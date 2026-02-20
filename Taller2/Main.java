@@ -37,7 +37,7 @@ public class Main {
         System.out.println("\n[3] Operación: Registrar devolución...");
         sistema.registerReturns(viaje, estacionDestino);
 
-        // Operación 3: Comprobar el estado final del sistem
+        // Operación 3: Comprobar el estado final del sistema
         System.out.println("\n=== Resumen del Sistema ===");
         System.out.println("Historial de viajes: " + sistema.getRentalHistory().size());
         System.out.println("Vehículos en Plaza Central (Origen): " + estacionOrigen.getVehicles().size());
